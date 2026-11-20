@@ -1,4 +1,4 @@
-# FPGA Accelerator PCB
+# MIPS-Based FPGA Accelerator and Custom PCB for Face and Drone Detection
 
 A 4-layer sensor shield for the Arty A7-100T FPGA board, designed in KiCad. It is the hardware of our B.Sc. final project, which runs face and drone detection on live camera video on an Artix-7 FPGA.
 
