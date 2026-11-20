@@ -1,10 +1,11 @@
 # FPGA Accelerator PCB
 
-A 4-layer sensor shield for the Arty A7-100T FPGA board, designed in KiCad. It carries the camera, microphones and wireless hardware for our B.Sc. final project, which runs face and drone detection on live camera video on an Artix-7 FPGA.
+A 4-layer sensor shield for the Arty A7-100T FPGA board, designed in KiCad. It is the hardware of our B.Sc. final project, which runs face and drone detection on live camera video on an Artix-7 FPGA.
 
 ![Assembled board, top side](images/Board_Top.jpg)
 
 Demo video: [youtu.be/dLib91150pU](https://youtu.be/dLib91150pU)
+
 Full schematic: [Shield_Schematic_REV1.pdf](Shield_Schematic_REV1.pdf)
 
 ## Specifications
@@ -16,19 +17,31 @@ Full schematic: [Shield_Schematic_REV1.pdf](Shield_Schematic_REV1.pdf)
 | Components | 124 |
 | Assembly | Both sides, assembled at JLCPCB |
 | Power input | USB-C |
-| Status | REV1, brought up and working |
+| Status | REV1, bring-up complete |
 
-## Design
+## Hardware Design
 
-**Power input.** USB-C input with a 0.75A resettable fuse, a TVS diode and ESD protection on the USB data lines, followed by an EMI filter at the input.
+### Power input
 
-**Power rails.** Three 3.3V LT1763 LDOs feed the Wi-Fi module, the logic and the camera. The FPGA switches each rail on and off through its own enable line, and an INA219 monitors the board current.
+Power comes in through USB-C. A 0.75A resettable fuse and a TVS diode protect the input, and the USB data lines have their own ESD protection. The input then passes through an EMI filter.
 
-**Peripherals.** An ESP32-C6-MINI-1 Wi-Fi/BLE module, a header for an OV5640 camera module, and six IM73D122 PDM MEMS microphones on the bottom side. Buttons, LEDs and a buzzer complete the user interface.
+### Power rails
+
+Each 3.3V rail has its own LT1763 LDO, and the FPGA switches it on or off through a separate enable line. An INA219 measures the board current.
+
+| Rail | Regulator | Enable signal |
+|---|---|---|
+| Wi-Fi | LT1763 | LDO_EN_WIFI |
+| Logic | LT1763 | LDO_EN_LOGIC |
+| Camera | LT1763 | LDO_EN_CAM |
+
+### Peripherals
+
+The board carries an ESP32-C6-MINI-1 Wi-Fi/BLE module and a header for an OV5640 camera module. Six IM73D122 PDM MEMS microphones sit on the bottom side. It also has a buzzer and four push buttons.
 
 ![Assembled board, bottom side with the six microphones](images/Board_Bottom.jpg)
 
-## Layout
+## PCB Layout
 
 ![PCB layout](images/PCB_Layout.png)
 
@@ -38,10 +51,12 @@ Full schematic: [Shield_Schematic_REV1.pdf](Shield_Schematic_REV1.pdf)
 
 ## The project
 
-We extended our own pipelined MIPS processor with an 8x8 systolic-array accelerator and implemented both on the Artix-7 FPGA. Face detection (YuNet) runs on every frame at up to 48 fps, and the same network, retrained on drone videos, finds a DJI Tello drone in live video.
+We extended our own pipelined MIPS processor with an 8x8 systolic-array accelerator and implemented both on an Artix-7 FPGA, to run detection networks on live camera video. Face detection (YuNet) runs on every frame at up to 48 fps, and the same network, retrained on drone videos, finds a DJI Tello drone in live video.
 
-Joint B.Sc. project at Shenkar, supervised by Dr. Oren Ganon. My part was the hardware: the shield's schematic, layout and bring-up, and the FPGA interface to the camera.
+B.Sc. final project at Shenkar, supervised by Dr. Oren Ganon.
 
-## License
+## Team
 
-© 2026 Michael Kochubey. All rights reserved.
+**Michael Kochubey** designed the shield's schematic and PCB layout, and brought the board up on the Arty A7. He also wrote the FPGA interface to the OV5640 camera. [LinkedIn](https://www.linkedin.com/in/michael-kochubey-089662317/)
+
+**Evyatar Shapira** wrote the FPGA interface to the PDM microphones and the logic of the 8x8 systolic-array accelerator. [LinkedIn](https://www.linkedin.com/in/evyatarsh/)
