@@ -45,7 +45,9 @@ The board carries an ESP32-C6-MINI-1 Wi-Fi/BLE module and a header for an OV5640
 
 Top and bottom sides as delivered by JLCPCB, before the connectors were soldered.
 
-<img src="images/Board_Top.jpg" alt="Shield top side as delivered by JLCPCB" width="49%"> <img src="images/Board_Bottom.jpg" alt="Shield bottom side as delivered by JLCPCB" width="49%">
+![Shield top side as delivered by JLCPCB](images/Board_Top.jpg)
+
+![Shield bottom side as delivered by JLCPCB](images/Board_Bottom.jpg)
 
 ## PCB Layout
 
