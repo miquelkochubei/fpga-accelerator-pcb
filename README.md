@@ -4,9 +4,9 @@ A 4-layer sensor shield for the Arty A7-100T FPGA board, designed in KiCad. It i
 
 <img src="Board_Top.png" alt="Assembled shield on the Arty A7, top side" width="600">
 
-Face and drone detection demo: [youtu.be/dLib91150pU](https://youtu.be/dLib91150pU)
+Drone detection video: [youtu.be/dLib91150pU](https://youtu.be/dLib91150pU)
 
-Sound direction finding demo: [youtu.be/q1vjfgceM_w](https://www.youtube.com/watch?v=q1vjfgceM_w)
+Sound direction finding video: [youtu.be/q1vjfgceM_w](https://www.youtube.com/watch?v=q1vjfgceM_w)
 
 Full schematic: [Shield_Schematic_REV1.pdf](Shield_Schematic_REV1.pdf)
 
